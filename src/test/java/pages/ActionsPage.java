@@ -16,6 +16,10 @@ public class ActionsPage {
         this.driver = driver;
         action = new Actions(driver);
     }
+    
+ // =========================
+    // Locators
+    // =========================
 
     // Mouse Hover
 
@@ -37,8 +41,24 @@ public class ActionsPage {
     
     By slider =
             By.xpath("//span[@class='ui-slider-handle ui-corner-all ui-state-default']");
+    
+ // Dynamic Button
 
+    By startBtn =
+            By.xpath("//button[text()='START']");
 
+    By stopBtn =
+            By.xpath("//button[text()='STOP']");
+
+    By resetBtn =
+            By.xpath("//button[text()='RESET']");
+    
+    
+    
+
+    // =========================
+    // Methods
+    // =========================
 
     public void mouseHover() {
 
@@ -84,6 +104,22 @@ public class ActionsPage {
                 .perform();
 
         System.out.println("Slider Done");
+    }
+    
+    public void handleDynamicButton() {
+
+        driver.findElement(startBtn).click();
+
+        System.out.println("START Clicked");
+
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e) {
+        }
+
+        driver.findElement(stopBtn).click();
+
+        System.out.println("STOP Clicked");
     }
 
 }

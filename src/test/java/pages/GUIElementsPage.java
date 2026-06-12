@@ -76,6 +76,13 @@ public class GUIElementsPage {
     By brokenLinks =
             By.xpath("//h2[contains(text(),'Broken Links')]/following::a");
     
+    By wikiSearchBox =
+            By.id("Wikipedia1_wikipedia-search-input");
+
+    By wikiSearchButton =
+            By.xpath("//input[@type='submit']");
+    
+    
     
     
     
@@ -295,5 +302,209 @@ public class GUIElementsPage {
         }
     }
     
+    public void clickSVGElements() {
 
+        try {
+
+            driver.findElement(
+                    By.xpath("(//*[name()='svg'])[1]"))
+                    .click();
+
+            driver.findElement(
+                    By.xpath("(//*[name()='svg'])[2]"))
+                    .click();
+
+            driver.findElement(
+                    By.xpath("(//*[name()='svg'])[3]"))
+                    .click();
+
+            System.out.println("SVG Elements Clicked");
+
+        } catch (Exception e) {
+
+            System.out.println("SVG Elements Not Found");
+        }
+    }
+
+    public void getVisitorCount() {
+
+        try {
+
+            WebElement visitors =
+                    driver.findElement(
+                    By.xpath("//h2[contains(text(),'Visitors')]"));
+
+            System.out.println(
+                    "Visitors Section Found = "
+                    + visitors.getText());
+
+        } catch (Exception e) {
+
+            System.out.println(
+                    "Visitor Count Not Found");
+        }
+    }
+
+    public void verifyMobileLabels() {
+
+        try {
+
+            List<WebElement> labels =
+                    driver.findElements(
+                    By.xpath("//*[contains(text(),'Samsung') or contains(text(),'Real Me') or contains(text(),'Moto')]"));
+
+            for(WebElement label : labels) {
+
+                System.out.println(
+                        "Mobile Label = "
+                        + label.getText());
+            }
+
+        } catch (Exception e) {
+
+            System.out.println(
+                    "Mobile Labels Not Found");
+        }
+    }
+
+    public void verifyLaptopLinks() {
+
+        try {
+
+            List<WebElement> links =
+                    driver.findElements(
+                    By.xpath("//a"));
+
+            for(WebElement link : links) {
+
+                String text =
+                        link.getText();
+
+                if(text.equals("Apple")
+                        || text.equals("Lenovo")
+                        || text.equals("Dell")) {
+
+                    System.out.println(
+                            "Laptop Link = "
+                            + text);
+                }
+            }
+
+        } catch (Exception e) {
+
+            System.out.println(
+                    "Laptop Links Not Found");
+        }
+    }
+    
+    public void handleShadowDOM() {
+
+        WebElement shadowHost =
+                driver.findElement(By.id("shadow_host"));
+
+        org.openqa.selenium.SearchContext shadowRoot =
+                shadowHost.getShadowRoot();
+
+        String mobile =
+                shadowRoot.findElement(
+                        By.cssSelector(".info"))
+                        .getText();
+
+        System.out.println("Shadow Mobile = "
+                + mobile);
+
+        WebElement blogLink =
+                shadowRoot.findElement(
+                        By.linkText("Blog"));
+
+        System.out.println("Blog Link = "
+                + blogLink.getText());
+
+        driver.findElement(
+                By.xpath("(//input[@type='text'])[5]"))
+                .sendKeys("Prachi");
+
+        driver.findElement(
+                By.xpath("(//input[@type='checkbox'])[5]"))
+                .click();
+
+        System.out.println(
+                "Shadow Textbox and Checkbox Handled");
+    }
+    
+    public void performWikiSearch() {
+
+        driver.findElement(wikiSearchBox)
+                .sendKeys("Selenium");
+
+        driver.findElement(wikiSearchButton)
+                .click();
+
+        System.out.println(
+                "Wiki Search Performed");
+    }
+    
+    public void handleHiddenElementsAjax() {
+
+        try {
+
+            driver.navigate().to(
+            "https://testautomationpractice.blogspot.com/p/hidden-elements.html");
+
+            Thread.sleep(2000);
+
+            System.out.println("Hidden Elements Page Opened");
+
+        } catch (Exception e) {
+
+            System.out.println("Hidden Elements Section Not Found");
+        }
+    }
+    
+    public void handleDownloadFiles() {
+
+        driver.navigate().to(
+        "https://testautomationpractice.blogspot.com/p/download-files_25.html");
+
+        driver.findElement(
+                By.id("inputText"))
+                .sendKeys("Prachi Wipro Final Project");
+
+        driver.findElement(
+                By.id("generateTxt"))
+                .click();
+
+        System.out.println(
+                "Text File Download Triggered");
+
+        driver.findElement(
+                By.id("generatePdf"))
+                .click();
+
+        System.out.println(
+                "PDF File Download Triggered");
+    }
+    
+    public void handleSectionsForm() {
+
+        driver.findElement(By.id("input1"))
+              .sendKeys("Prachi");
+
+        driver.findElement(By.id("btn1"))
+              .click();
+
+        driver.findElement(By.id("input2"))
+              .sendKeys("Wipro");
+
+        driver.findElement(By.id("btn2"))
+              .click();
+
+        driver.findElement(By.id("input3"))
+              .sendKeys("Automation");
+
+        driver.findElement(By.id("btn3"))
+              .click();
+
+        System.out.println("Section Forms Handled");
+    }
 }

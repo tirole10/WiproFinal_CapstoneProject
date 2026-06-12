@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-06-10T15:11:07 IST" name="Default suite" finished-at="2026-06-10T15:11:30 IST" duration-ms="22553">
+  <suite started-at="2026-06-12T01:30:56 IST" name="Default suite" finished-at="2026-06-12T01:31:28 IST" duration-ms="31223">
     <groups>
     </groups>
-    <test started-at="2026-06-10T15:11:07 IST" name="Default test" finished-at="2026-06-10T15:11:30 IST" duration-ms="22553">
+    <test started-at="2026-06-12T01:30:56 IST" name="Default test" finished-at="2026-06-12T01:31:28 IST" duration-ms="31223">
       <class name="tests.GUIElementsTest">
-        <test-method signature="launchWebsite()[pri:0, instance:tests.GUIElementsTest@71d44a3]" started-at="2026-06-10T15:11:07 IST" name="launchWebsite" finished-at="2026-06-10T15:11:29 IST" duration-ms="21887" status="PASS">
+        <test-method signature="launchWebsite()[pri:0, instance:tests.GUIElementsTest@32c8e539]" started-at="2026-06-12T01:30:56 IST" name="launchWebsite" finished-at="2026-06-12T01:31:27 IST" duration-ms="30844" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchWebsite -->
